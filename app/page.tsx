@@ -72,13 +72,13 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chapters.map((chapter) => (
+            {chapters.map((chapter,index) => (
               <Card key={chapter.id} className="hover:shadow-lg transition-all duration-300 hover:scale-105 group">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <CardTitle className="text-xl mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {chapter.title}
+                        {index+1}. {chapter.title}
                       </CardTitle>
                     </div>
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
