@@ -169,7 +169,7 @@ export default function ExamPage() {
                     >
                       <div className="flex-1">
                         <p className="font-medium">Question {index + 1}</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{question.question}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{question.question}</p>
                       </div>
                       {userAnswer.isCorrect ? (
                         <CheckCircle className="h-6 w-6 text-green-500 ml-4" />
