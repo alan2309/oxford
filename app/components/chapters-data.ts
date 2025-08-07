@@ -71,7 +71,7 @@ export const chapters: Chapter[] = [
   {
     id: "highspeedflight",
     title: "High Speed Flight",
-    questionCount: 44,
+    questionCount: 27,
   },
 ]
 
