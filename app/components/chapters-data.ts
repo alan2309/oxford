@@ -53,6 +53,16 @@ export const chapters: Chapter[] = [
     title: "Airframe Contamination",
     questionCount: 7,
   },
+  {
+    id: "stability",
+    title: "Stability and Control",
+    questionCount: 37,
+  },
+  {
+    id: "controls",
+    title: "Controls",
+    questionCount: 37,
+  },
 ]
 
 // Function to get chapter data by ID
