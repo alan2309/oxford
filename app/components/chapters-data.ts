@@ -66,7 +66,7 @@ export const chapters: Chapter[] = [
   {
     id: "flightMech",
     title: "Flight Mechanics",
-    questionCount: 44,
+    questionCount: 36,
   },
   {
     id: "highspeedflight",
