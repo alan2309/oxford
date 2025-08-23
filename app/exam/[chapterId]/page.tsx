@@ -22,7 +22,7 @@ export default function ExamPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [showResult, setShowResult] = useState(false)
   const [score, setScore] = useState(0)
-  const [answers, setAnswers] = useState<Array<{ questionId: number; selectedAnswer: number; isCorrect: boolean }>>([])
+  const [answers, setAnswers] = useState<Array<{ questionId: number; selectedAnswer: number; isCorrect: boolean,ans: number }>>([])
   const [examCompleted, setExamCompleted] = useState(false)
   const [loading, setLoading] = useState(true)
 
@@ -98,6 +98,7 @@ export default function ExamPage() {
         questionId: currentQuestion.id,
         selectedAnswer,
         isCorrect,
+        ans:currentQuestion.answer
       },
     ])
 
@@ -169,7 +170,9 @@ export default function ExamPage() {
                     >
                       <div className="flex-1">
                         <p className="font-medium">Question {index + 1}</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{question.question}</p>
+                        <p className="text-sm text-gray-900 dark:text-gray-900">{question.question}</p><br/>
+                        <p className={`text-m text-gray-700 dark:text-gray-700`}>Answer:</p>
+                        <p className={`text-sm text-gray-700 dark:text-gray-700`}>{question.options[userAnswer.ans]}</p>
                       </div>
                       {userAnswer.isCorrect ? (
                         <CheckCircle className="h-6 w-6 text-green-500 ml-4" />

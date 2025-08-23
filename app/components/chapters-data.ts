@@ -78,6 +78,11 @@ export const chapters: Chapter[] = [
     title: "Limitattions",
     questionCount: 13,
   },
+  {
+    id: "windshear",
+    title: "Windshear",
+    questionCount: 13,
+  },
 ]
 
 // Function to get chapter data by ID
