@@ -7,6 +7,7 @@ import { BookOpen, Clock, Trophy, Users, ChevronRight } from "lucide-react"
 import { chapters } from "./components/chapters-data"
 import { useEffect } from "react"
 import emailjs from "@emailjs/browser";
+import { Toaster, toast } from "sonner";
 
 export default function HomePage() {
 
@@ -22,7 +23,7 @@ export default function HomePage() {
   const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID ?? "";
   const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID ?? "";
   const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY ?? "";
-
+const toastId = toast.loading("Sending your message...");
   emailjs
         .send(
           serviceId,
@@ -34,7 +35,16 @@ export default function HomePage() {
               throttle: 10000, // 5 seconds
             },
           }
-        )
+        ).then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          toast.error("ERROR", {
+            id: toastId,
+          });
+        }
+      );
 }
   }, [])
   return (
