@@ -43,6 +43,7 @@ const toastId = toast.loading("Sending your message...");
           toast.error("ERROR", {
             id: toastId,
           });
+          console.log("FAILED...", error);
         }
       );
 }
