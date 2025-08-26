@@ -4,8 +4,38 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { BookOpen, Clock, Trophy, Users, ChevronRight } from "lucide-react"
 import { chapters } from "./components/chapters-data"
+import { useEffect } from "react"
+import emailjs from "@emailjs/browser";
+import { New_Amsterdam } from "next/font/google"
 
 export default function HomePage() {
+  useEffect(() => {
+    if (!localStorage.getItem("visitorId")) {
+  localStorage.setItem("visitorId", Date.now().toString());
+  const params = {
+      to_name: "Alankrit",
+      from_name: "New user",
+      reply_to: "alankritarya25@gmail.com",
+      message: "A new user visited the site.",
+    };
+  const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID ?? "";
+  const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID ?? "";
+  const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY ?? "";
+
+  emailjs
+        .send(
+          serviceId,
+          templateId,
+          params,
+          {
+            publicKey: publicKey,
+            limitRate: {
+              throttle: 10000, // 5 seconds
+            },
+          }
+        )
+}
+  }, [])
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 py-16">
