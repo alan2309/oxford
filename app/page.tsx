@@ -50,6 +50,7 @@ const toastId = toast.loading("Sending your message...");
   }, [])
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+       <Toaster richColors={true} />
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
