@@ -24,7 +24,7 @@ export default function HomePage() {
   const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID ?? "";
   const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY ?? "";
 const toastId = toast.loading("Sending your message...");
-console.log("Sending email with params:", params);
+console.log("Sending email with params:", params, serviceId, templateId, publicKey);
   emailjs
         .send(
           serviceId,
