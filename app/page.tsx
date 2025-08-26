@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,6 +9,7 @@ import { useEffect } from "react"
 import emailjs from "@emailjs/browser";
 
 export default function HomePage() {
+
   useEffect(() => {
     if (!localStorage.getItem("visitorId")) {
   localStorage.setItem("visitorId", Date.now().toString());
