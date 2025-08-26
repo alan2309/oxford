@@ -6,7 +6,6 @@ import { BookOpen, Clock, Trophy, Users, ChevronRight } from "lucide-react"
 import { chapters } from "./components/chapters-data"
 import { useEffect } from "react"
 import emailjs from "@emailjs/browser";
-import { New_Amsterdam } from "next/font/google"
 
 export default function HomePage() {
   useEffect(() => {
