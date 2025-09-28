@@ -1,26 +1,58 @@
-// app/api/data/[id]/route.ts
+// app/api/chapters/[chapterId]/route.ts
 import { NextResponse } from "next/server"
-import { ObjectId } from "mongodb" // 👈 import this
-import clientPromise from "@/lib/mongodb" // example: your MongoDB connection util
+import clientPromise from "@/lib/mongodb"
 
 export async function PUT(
   req: Request,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ chapterId: string }> }
 ) {
   try {
-    const { id } = await context.params
+    const { chapterId } = await context.params
     const body = await req.json()
 
-    const client = await clientPromise
-    const db = client.db("chapters")
+    if (!chapterId || !body.updates) {
+      return NextResponse.json(
+        { success: false, message: "chapterId and updates are required" },
+        { status: 400 }
+      )
+    }
 
-    const updated = await db.collection("chapter").updateOne(
-      { _id: new ObjectId(id) }, // 👈 convert string -> ObjectId
-      { $set: body }
+    const client = await clientPromise
+    const db = client.db("your_database_name") // Replace with actual DB name
+
+    // Dynamic import
+    const { ObjectId } = await import('mongodb')
+
+    const result = await db.collection("chapters").updateOne(
+      { 
+        "_id": new ObjectId("68d83b4b8172af226ec67659"), // Your main document ID
+        "data._id": chapterId 
+      },
+      { 
+        $set: Object.fromEntries(
+          Object.entries(body.updates).map(([key, value]) => [
+            `data.$[elem].${key}`, value
+          ])
+        )
+      },
+      { 
+        arrayFilters: [{ "elem._id": chapterId }] 
+      }
     )
-    return NextResponse.json({ success: true, data: updated })
+
+    if (result.modifiedCount === 0) {
+      return NextResponse.json(
+        { success: false, message: "Chapter not found or no changes made" },
+        { status: 404 }
+      )
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Chapter updated successfully'
+    })
   } catch (error) {
-    console.error(error)
+    console.error("Update error:", error)
     return NextResponse.json(
       { success: false, message: "Update failed" },
       { status: 500 }
