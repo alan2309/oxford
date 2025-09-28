@@ -32,8 +32,9 @@ export default function HomePage() {
         const result = await response.json();
         setData(result.data[0].data);
       }
-      catch (err: any) {
-        console.error(err?.message || 'An error occurred');
+      catch (err: unknown) {
+        const error = err as Error
+        console.error(error.message || 'An error occurred');
       }
     }
     fetchData();
@@ -123,12 +124,10 @@ export default function HomePage() {
       if (!response.ok) {
         throw new Error('Failed to save progress');
       }
-      
-      const result = await response.json();
 
       toast.success("Progress saved successfully!", { id: toastId });
     } catch (error) {
-      toast.error("Failed to save progress", { id: toastId });
+      toast.error(`Failed to save progress-${error}`, { id: toastId });
     } finally {
       setIsSaving(false);
     }
