@@ -5,10 +5,10 @@ import clientPromise from "@/lib/mongodb"
 
 export async function PUT(
   req: Request,
-  context: { params: { id: string } } // ✅ no Promise
+  { params }: { params: { id: string } } // ✅ no Promise
 ) {
   try {
-    const { id } = context.params
+    const { id } = params
     const body = await req.json()
 
     const client = await clientPromise
