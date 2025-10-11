@@ -254,7 +254,7 @@ export const examData : ExamData={
       "1 only.",
       "1 and 2."
     ],
-    "answer": 3
+    "answer": 2
   },
   {
     "id": 24,

@@ -353,7 +353,7 @@ export const examData : ExamData={
       "1.07%.",
       "15%."
     ],
-    "answer": 3
+    "answer": 0
   },
   {
     "id": 33,

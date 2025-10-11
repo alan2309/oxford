@@ -51,7 +51,7 @@ export const examData : ExamData={
       "1, 3 and 5",
       "1 and 5"
     ],
-    "answer": 3
+    "answer": 1
   },
   {
     "id": 5,
