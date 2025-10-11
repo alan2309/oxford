@@ -25,6 +25,21 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [openBooks, setOpenBooks] = useState<Set<string>>(new Set());
 
+  // Filter books and chapters based on search query
+  const filteredBooks = books.filter(book => {
+    const matchesBook = book.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesChapters = book.chapters.some(chapter => 
+      chapter.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return matchesBook || matchesChapters;
+  }).map(book => ({
+    ...book,
+    chapters: book.chapters.filter(chapter => 
+      chapter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  }));
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -79,6 +94,16 @@ export default function HomePage() {
         );
     }
   }, [])
+
+  // Auto-open books that have search results
+  useEffect(() => {
+    if (searchQuery) {
+      const booksWithResults = new Set(filteredBooks.map(book => book.title));
+      setOpenBooks(booksWithResults);
+    } else {
+      setOpenBooks(new Set());
+    }
+  }, [searchQuery, filteredBooks]); // Added filteredBooks to dependency array
 
   // Sort data by book and then by index number
   const sortedData = data ? [...data].sort((a, b) => {
@@ -151,31 +176,6 @@ export default function HomePage() {
     }
     setOpenBooks(newOpenBooks);
   };
-
-  // Filter books and chapters based on search query
-  const filteredBooks = books.filter(book => {
-    const matchesBook = book.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesChapters = book.chapters.some(chapter => 
-      chapter.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    return matchesBook || matchesChapters;
-  }).map(book => ({
-    ...book,
-    chapters: book.chapters.filter(chapter => 
-      chapter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  }));
-
-  // Auto-open books that have search results
-  useEffect(() => {
-    if (searchQuery) {
-      const booksWithResults = new Set(filteredBooks.map(book => book.title));
-      setOpenBooks(booksWithResults);
-    } else {
-      setOpenBooks(new Set());
-    }
-  }, [searchQuery]);
 
   // Calculate total questions and chapters from books data
   const totalQuestions = books.reduce((total, book) => 
@@ -430,7 +430,7 @@ export default function HomePage() {
                   No results found
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  No books or chapters match your search for "{searchQuery}"
+                  No books or chapters match your search for &ldquo;{searchQuery}&rdquo;
                 </p>
                 <Button 
                   onClick={() => setSearchQuery("")} 
