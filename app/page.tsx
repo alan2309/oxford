@@ -8,7 +8,7 @@ import { BookOpen, Clock, Trophy, Users, ChevronRight, CheckSquare, X, Save, Che
 import { books } from "./components/chapters-data"
 import emailjs from "@emailjs/browser";
 import { Toaster, toast } from "sonner";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 interface Chapter {
   _id: string;
@@ -24,21 +24,6 @@ export default function HomePage() {
   const [isSaving, setIsSaving] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [openBooks, setOpenBooks] = useState<Set<string>>(new Set());
-
-  // Filter books and chapters based on search query
-  const filteredBooks = books.filter(book => {
-    const matchesBook = book.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesChapters = book.chapters.some(chapter => 
-      chapter.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    return matchesBook || matchesChapters;
-  }).map(book => ({
-    ...book,
-    chapters: book.chapters.filter(chapter => 
-      chapter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  }));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -95,15 +80,33 @@ export default function HomePage() {
     }
   }, [])
 
-  // Auto-open books that have search results
+  // Filter books and chapters based on search query - using useMemo to prevent unnecessary recalculations
+  const filteredBooks = useMemo(() => {
+    return books.filter(book => {
+      const matchesBook = book.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesChapters = book.chapters.some(chapter => 
+        chapter.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      return matchesBook || matchesChapters;
+    }).map(book => ({
+      ...book,
+      chapters: book.chapters.filter(chapter => 
+        chapter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    }));
+  }, [searchQuery]);
+
+  // Auto-open books that have search results - only when searchQuery changes
   useEffect(() => {
     if (searchQuery) {
       const booksWithResults = new Set(filteredBooks.map(book => book.title));
       setOpenBooks(booksWithResults);
     } else {
+      // Only reset if we're not manually keeping any books open
       setOpenBooks(new Set());
     }
-  }, [searchQuery, filteredBooks]); // Added filteredBooks to dependency array
+  }, [searchQuery]); // Removed filteredBooks from dependencies
 
   // Sort data by book and then by index number
   const sortedData = data ? [...data].sort((a, b) => {
