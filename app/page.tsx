@@ -3,8 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, Clock, Trophy, Users, ChevronRight, CheckSquare, X, Save } from "lucide-react"
-import { chapters } from "./components/chapters-data"
+import { Input } from "@/components/ui/input"
+import { BookOpen, Clock, Trophy, Users, ChevronRight, CheckSquare, X, Save, ChevronDown, Search } from "lucide-react"
+import { books } from "./components/chapters-data"
 import emailjs from "@emailjs/browser";
 import { Toaster, toast } from "sonner";
 import { useEffect, useState } from "react";
@@ -21,6 +22,8 @@ export default function HomePage() {
   const [data, setData] = useState<Chapter[] | null>(null);
   const [checklistOpen, setChecklistOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [openBooks, setOpenBooks] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -137,6 +140,49 @@ export default function HomePage() {
   const hasChanges = data && data.some(chapter => 
     chapter.status === 'true' || chapter.status === 'false'
   );
+
+  // Toggle book open/closed
+  const toggleBook = (bookTitle: string) => {
+    const newOpenBooks = new Set(openBooks);
+    if (newOpenBooks.has(bookTitle)) {
+      newOpenBooks.delete(bookTitle);
+    } else {
+      newOpenBooks.add(bookTitle);
+    }
+    setOpenBooks(newOpenBooks);
+  };
+
+  // Filter books and chapters based on search query
+  const filteredBooks = books.filter(book => {
+    const matchesBook = book.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesChapters = book.chapters.some(chapter => 
+      chapter.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return matchesBook || matchesChapters;
+  }).map(book => ({
+    ...book,
+    chapters: book.chapters.filter(chapter => 
+      chapter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  }));
+
+  // Auto-open books that have search results
+  useEffect(() => {
+    if (searchQuery) {
+      const booksWithResults = new Set(filteredBooks.map(book => book.title));
+      setOpenBooks(booksWithResults);
+    } else {
+      setOpenBooks(new Set());
+    }
+  }, [searchQuery]);
+
+  // Calculate total questions and chapters from books data
+  const totalQuestions = books.reduce((total, book) => 
+    total + book.chapters.reduce((bookTotal, chapter) => bookTotal + chapter.questionCount, 0), 0
+  );
+  
+  const totalChapters = books.reduce((total, book) => total + book.chapters.length, 0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
@@ -272,7 +318,36 @@ export default function HomePage() {
           </Card>
         </div>
 
-        {/* Chapters Section */}
+        {/* Search Bar */}
+        <div className="mb-8 max-w-2xl mx-auto">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Input
+              type="text"
+              placeholder="Search books or chapters..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 pr-4 py-2 w-full border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+            />
+            {searchQuery && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0"
+              >
+                <X className="h-3 w-3" />
+              </Button>
+            )}
+          </div>
+          {searchQuery && (
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">
+              Found {filteredBooks.reduce((total, book) => total + book.chapters.length, 0)} chapters in {filteredBooks.length} books
+            </p>
+          )}
+        </div>
+
+        {/* Books and Chapters Section */}
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Choose Your Chapter</h2>
@@ -282,35 +357,90 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chapters.map((chapter,index) => (
-              <Card key={chapter.id} className="hover:shadow-lg transition-all duration-300 hover:scale-105 group">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <CardTitle className="text-xl mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {index+1}. {chapter.title}
-                      </CardTitle>
+          <div className="space-y-4">
+            {filteredBooks.map((book) => (
+              <Card key={book.title} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                {/* Book Header - Clickable */}
+                <button
+                  onClick={() => toggleBook(book.title)}
+                  className="w-full text-left p-6 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <BookOpen className="h-6 w-6 mr-3 text-blue-600 dark:text-blue-400" />
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {book.title}
+                      </h3>
+                      <Badge variant="secondary" className="ml-3">
+                        {book.chapters.length} chapters
+                      </Badge>
                     </div>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {openBooks.has(book.title) ? 'Hide' : 'Show'} chapters
+                      </span>
+                      <ChevronDown 
+                        className={`h-5 w-5 text-gray-400 transition-transform ${
+                          openBooks.has(book.title) ? 'rotate-180' : ''
+                        }`} 
+                      />
+                    </div>
                   </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="text-xs">
-                      {chapter.questionCount} Questions
-                    </Badge>
-                  </div>
+                </button>
 
-                  <Link href={`/exam/${chapter.id}`} className="block">
-                    <Button className="w-full group-hover:bg-blue-600 transition-colors">
-                      Start {chapter.title} Exam
-                      <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
+                {/* Collapsible Chapters */}
+                {openBooks.has(book.title) && (
+                  <div className="p-6 pt-0 border-t border-gray-200 dark:border-gray-700">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {book.chapters.map((chapter) => (
+                        <Card key={chapter.id} className="hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                          <CardHeader className="pb-3">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <CardTitle className="text-lg mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                  {chapter.title}
+                                </CardTitle>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">
+                                  {chapter.questionCount} Questions
+                                </p>
+                              </div>
+                              <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors mt-1" />
+                            </div>
+                          </CardHeader>
+                          <CardContent className="pt-0">
+                            <Link href={`/exam/${chapter.id}`} className="block">
+                              <Button className="w-full group-hover:bg-blue-600 transition-colors" size="sm">
+                                Start Exam
+                                <ChevronRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </Link>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </Card>
             ))}
+
+            {filteredBooks.length === 0 && searchQuery && (
+              <div className="text-center py-12">
+                <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  No results found
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  No books or chapters match your search for "{searchQuery}"
+                </p>
+                <Button 
+                  onClick={() => setSearchQuery("")} 
+                  variant="outline" 
+                  className="mt-4"
+                >
+                  Clear search
+                </Button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -320,12 +450,12 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                {chapters.reduce((total, chapter) => total + chapter.questionCount, 0)}
+                {totalQuestions}
               </div>
               <p className="text-gray-600 dark:text-gray-400">Total Questions</p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">{chapters.length}</div>
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">{totalChapters}</div>
               <p className="text-gray-600 dark:text-gray-400">Available Chapters</p>
             </div>
           </div>
