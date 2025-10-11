@@ -81,7 +81,17 @@ export const chapters: Chapter[] = [
   {
     id: "windshear",
     title: "Windshear",
-    questionCount: 13,
+    questionCount: 17,
+  },
+  {
+    id: "propellers",
+    title: "Propellers and Gyroscopic Effects",
+    questionCount: 17,
+  },
+  {
+    id: "revision",
+    title: "Revision",
+    questionCount: 182,
   },
 ]
 
