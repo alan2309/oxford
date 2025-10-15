@@ -89,7 +89,7 @@ export const examData : ExamData={
       "the left aileron moves up, right aileron moves down, elevator down.",
       "the left aileron moves down, right aileron moves up, elevator moves up."
     ],
-    "answer": 1
+    "answer": 2
   },
   {
     "id": 9,
@@ -262,7 +262,7 @@ export const examData : ExamData={
       "Balance tab.",
       "Trim tab."
     ],
-    "answer": 0
+    "answer": 1
   },
   {
     "id": 25,
@@ -328,7 +328,7 @@ export const examData : ExamData={
       "Due to greater induced drag on the up-going wing.",
       "Due to greater profile drag on the up-going wing."
     ],
-    "answer": 0
+    "answer": 1
   },
   {
     "id": 31,
