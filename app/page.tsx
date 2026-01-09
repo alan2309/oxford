@@ -313,7 +313,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Oxford Exam Platform(By Alankrit Arya)
+            Oxford Exam ~Alankrit Arya
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Choose from our comprehensive collection of exam chapters. Test your
