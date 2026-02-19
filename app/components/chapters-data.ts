@@ -17,6 +17,8 @@ export const books: Book[] = [
     chapters: [
       { id: "finalexam1", title: "FINAL EXAM", questionCount: 100 },
       { id: "PerformanceLimitations", title: "Performance & Limitations Test", questionCount: 30 },
+      { id: "avionics", title: "Avionics", questionCount: 35 },
+
     ],
   },
   {
