@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,7 +10,17 @@ import { Progress } from "@/components/ui/progress"
 import { CheckCircle, XCircle, RotateCcw, Home, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { getChapterData } from "@/app/components/chapters-data"
-import type { ExamData } from "@/app/components/exam-data"
+import type { ExamData, Question } from "@/app/components/exam-data"
+
+/** Fisher-Yates shuffle — returns a new shuffled array without mutating the original */
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
 
 export default function ExamPage() {
   const params = useParams()
@@ -22,7 +32,7 @@ export default function ExamPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [showResult, setShowResult] = useState(false)
   const [score, setScore] = useState(0)
-  const [answers, setAnswers] = useState<Array<{ questionId: number; selectedAnswer: number; isCorrect: boolean,ans: number }>>([])
+  const [answers, setAnswers] = useState<Array<{ questionId: number; selectedAnswer: number; isCorrect: boolean; ans: number }>>([])
   const [examCompleted, setExamCompleted] = useState(false)
   const [loading, setLoading] = useState(true)
 
@@ -45,6 +55,15 @@ export default function ExamPage() {
 
     loadExamData()
   }, [chapterId, router])
+
+  /**
+   * Shuffle question order once when examData first loads.
+   * Options stay in their original order so the `answer` index remains valid.
+   */
+  const questions = useMemo<Question[]>(() => {
+    if (!examData) return []
+    return shuffle(examData.questions)
+  }, [examData])
 
   if (loading) {
     return (
@@ -76,8 +95,8 @@ export default function ExamPage() {
     )
   }
 
-  const currentQuestion = examData.questions[currentQuestionIndex]
-  const progress = ((currentQuestionIndex + 1) / examData.questions.length) * 100
+  const currentQuestion = questions[currentQuestionIndex]
+  const progress = ((currentQuestionIndex + 1) / questions.length) * 100
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex)
@@ -98,7 +117,7 @@ export default function ExamPage() {
         questionId: currentQuestion.id,
         selectedAnswer,
         isCorrect,
-        ans:currentQuestion.answer
+        ans: currentQuestion.answer
       },
     ])
 
@@ -106,7 +125,7 @@ export default function ExamPage() {
   }
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < examData.questions.length - 1) {
+    if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setSelectedAnswer(null)
       setShowResult(false)
@@ -139,7 +158,7 @@ export default function ExamPage() {
   }
 
   if (examCompleted) {
-    const percentage = Math.round((score / examData.questions.length) * 100)
+    const percentage = Math.round((score / questions.length) * 100)
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
@@ -150,7 +169,7 @@ export default function ExamPage() {
                 Exam Completed! 🎉
               </CardTitle>
               <CardDescription className="text-xl">
-                {examData.title} - Your final score: {score} out of {examData.questions.length}
+                {examData.title} - Your final score: {score} out of {questions.length}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -161,7 +180,7 @@ export default function ExamPage() {
 
               <div className="space-y-3">
                 <h3 className="font-semibold text-lg">Review Your Answers:</h3>
-                {examData.questions.map((question, index) => {
+                {questions.map((question, index) => {
                   const userAnswer = answers[index]
                   return (
                     <div
@@ -170,9 +189,15 @@ export default function ExamPage() {
                     >
                       <div className="flex-1">
                         <p className="font-medium">Question {index + 1}</p>
-                        <p className="text-sm text-gray-900 dark:text-gray-900">{question.question}</p><br/>
-                        <p className={`text-m text-gray-700 dark:text-gray-700`}>Answer:</p>
-                        <p className={`text-sm text-gray-700 dark:text-gray-700`}>{question.options[userAnswer.ans]}</p>
+                        <p className="text-sm text-gray-900 dark:text-gray-900">{question.question}</p><br />
+                        <p className="text-m text-gray-700 dark:text-gray-700">Correct Answer:</p>
+                        <p className="text-sm text-green-700 dark:text-green-400 font-medium">{question.options[userAnswer.ans]}</p>
+                        {!userAnswer.isCorrect && (
+                          <>
+                            <p className="text-m text-gray-700 dark:text-gray-700 mt-1">Your Answer:</p>
+                            <p className="text-sm text-red-700 dark:text-red-400">{question.options[userAnswer.selectedAnswer]}</p>
+                          </>
+                        )}
                       </div>
                       {userAnswer.isCorrect ? (
                         <CheckCircle className="h-6 w-6 text-green-500 ml-4" />
@@ -219,7 +244,7 @@ export default function ExamPage() {
             <div className="text-right">
               <div className="text-sm text-gray-600 dark:text-gray-400">Score</div>
               <div className="text-lg font-bold">
-                {score}/{examData.questions.length}
+                {score}/{questions.length}
               </div>
             </div>
           </div>
@@ -229,7 +254,7 @@ export default function ExamPage() {
           <div className="space-y-2">
             <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
               <span>
-                Question {currentQuestionIndex + 1} of {examData.questions.length}
+                Question {currentQuestionIndex + 1} of {questions.length}
               </span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
@@ -265,11 +290,10 @@ export default function ExamPage() {
               <div className="space-y-4">
                 {/* Result Feedback */}
                 <div
-                  className={`p-4 rounded-lg border-2 ${
-                    selectedAnswer === currentQuestion.answer
+                  className={`p-4 rounded-lg border-2 ${selectedAnswer === currentQuestion.answer
                       ? "border-green-500 bg-green-50 dark:bg-green-900/20"
                       : "border-red-500 bg-red-50 dark:bg-red-900/20"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center space-x-2 mb-3">
                     {selectedAnswer === currentQuestion.answer ? (
@@ -294,13 +318,12 @@ export default function ExamPage() {
                   {currentQuestion.options.map((option, index) => (
                     <div
                       key={index}
-                      className={`p-3 rounded-lg border transition-colors ${
-                        index === currentQuestion.answer
+                      className={`p-3 rounded-lg border transition-colors ${index === currentQuestion.answer
                           ? "border-green-500 bg-green-50 dark:bg-green-900/20"
                           : index === selectedAnswer && selectedAnswer !== currentQuestion.answer
                             ? "border-red-500 bg-red-50 dark:bg-red-900/20"
                             : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-sm">{option}</span>
@@ -322,7 +345,7 @@ export default function ExamPage() {
               </Button>
             ) : (
               <Button onClick={handleNextQuestion} className="w-full" size="lg">
-                {currentQuestionIndex < examData.questions.length - 1 ? "Next Question" : "View Results"}
+                {currentQuestionIndex < questions.length - 1 ? "Next Question" : "View Results"}
               </Button>
             )}
           </CardFooter>
