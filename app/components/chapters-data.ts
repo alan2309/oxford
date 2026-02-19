@@ -13,6 +13,12 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "A320 Tests",
+    chapters: [
+      { id: "finalexam1", title: "FINAL EXAM", questionCount: 100 },
+    ],
+  },
+  {
     title: "Principles of Flight",
     chapters: [
       { id: "Overview", title: "Overview", questionCount: 26 },
