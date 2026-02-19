@@ -49,7 +49,7 @@ export const examData: ExamData = {
             "id": 5,
             "question": "In normal law, MMO and VMO limits are depicted on each PFD as:",
             "options": [
-                "Green's",
+                "Green ='s",
                 "Red x's",
                 "Green x's",
                 "Amber x's"
