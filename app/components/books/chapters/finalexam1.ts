@@ -41,7 +41,7 @@ export const examData: ExamData = {
             "question": "The Captain's FMA indicates - FD2 in column five, line two. What does this mean?",
             "options": [
                 "FMGC 1 has timed out and FMGC 2 is now providing flight guidance for both pilots",
-                "FMGC 1 has timed out and flight guidance is lost",
+                "FMGC 1 has timed out and flight guidance is lost.",
                 "The First Officer has pushed the priority takeover pushbutton.",
                 "The Captain's FD pushbutton on the FCU has not been selected ON and FD2 has automatically crossed over."
             ],
