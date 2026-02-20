@@ -13,7 +13,7 @@ export const examData: ExamData = {
     { id: 49, question: "Why is PTU inhibited during cargo door operation?", options: ["Prevent overheating", "Prevent uncommanded pressurization of Yellow system", "Prevent electrical overload", "To save fuel"], answer: 1 },
     { id: 50, question: "The RAT supplies hydraulic pressure to:", options: ["Green", "Yellow", "Blue", "All systems"], answer: 2 },
     { id: 51, question: "RAT deployment occurs automatically when:", options: ["Dual hydraulic failure", "Total AC electrical failure in flight", "Engine 1 failure", "Engine 2 failure"], answer: 1 },
-    { id: 52, question: "When deployed, the RAT provides approximately:", options: ["1000 psi", "2000 psi", "3000 psi", "4000 psi"], answer: 2 },
+    { id: 52, question: "When deployed, the RAT provides approximately:", options: ["1000 psi", "2000 psi", "2500 psi", "3000 psi"], answer: 2 },
     { id: 53, question: "In emergency electrical configuration, which primary flight controls remain available?\n1. Elevator\n2. Rudder\n3. Aileron\n4. Slats", options: ["1,2,3", "1,2", "1 only", "All four"], answer: 0 },
     { id: 54, question: "The Blue electric pump is powered by:", options: ["DC BUS 1", "DC BUS 2", "AC BUS 1", "AC BUS 2"], answer: 2 },
     { id: 55, question: "The Yellow electric pump is powered by:", options: ["DC BUS 1", "DC BUS 2", "AC BUS 1", "AC BUS 2"], answer: 3 },
