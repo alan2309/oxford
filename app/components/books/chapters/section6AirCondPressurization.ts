@@ -409,13 +409,7 @@ export const examData: ExamData = {
                 "B) 1, 2, 3"
             ],
             "answer": 1
-        }
-    ]
-};
-
-export const examDataPart2: ExamData = {
-    title: "Air-conditioning, Pressurization and Ventilation System (Continued)",
-    questions: [
+        },
         {
             "id": 40,
             "question": "When the system is in automatic or semi-automatic mode, one controller is active, the other is on standby.",

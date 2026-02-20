@@ -20,7 +20,7 @@ export const books: Book[] = [
       { id: "hydraulics", title: "Hydraulic System", questionCount: 30 },
       { id: "section4Fuel", title: "Fuel System", questionCount: 25 },
       { id: "section5PneumaticBleed", title: "Pneumatic & Bleed Air System", questionCount: 15 },
-      { id: "section6AirCondPressurization", title: "Air Conditioning & Pressurization", questionCount: 25 },
+      { id: "section6AirCondPressurization", title: "Air Conditioning & Pressurization", questionCount: 103 },
       { id: "section7IceRain", title: "Ice & Rain Protection", questionCount: 5 },
       { id: "section8FireProtection", title: "Fire Protection", questionCount: 27 },
       { id: "section9FlightControls", title: "flight Controls", questionCount: 29 },
