@@ -16,7 +16,7 @@ export const books: Book[] = [
     title: "A320 Tests",
     chapters: [
       { id: "general", title: "General", questionCount: 20 },
-      { id: "systemsmini", title: "Systems Test(not all)", questionCount: 65 },
+      { id: "electrical", title: "Electrical System", questionCount: 20 },
       { id: "systemsmini", title: "Systems Test(not all)", questionCount: 65 },
 
       { id: "finalexam1", title: "FINAL EXAM", questionCount: 100 },
