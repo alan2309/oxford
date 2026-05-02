@@ -7,12 +7,12 @@ import { cookies } from "next/headers";
  * Since this is a Server Action, this value is NEVER sent to the browser.
  * It is completely invisible in the developer panel/inspect.
  */
-const SITE_PIN = "130901"; 
+const SITE_PIN = "130903";
 
 export async function verifyPin(enteredPin: string) {
   if (enteredPin === SITE_PIN) {
     const cookieStore = await cookies();
-    
+
     // Set a cookie that expires in 24 hours
     // This is more secure than localStorage as it can be httpOnly
     cookieStore.set("oxford_tech_access", "true", {
@@ -22,10 +22,10 @@ export async function verifyPin(enteredPin: string) {
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
     });
-    
+
     return { success: true };
   }
-  
+
   return { success: false };
 }
 
