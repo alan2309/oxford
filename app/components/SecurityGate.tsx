@@ -33,7 +33,7 @@ export default function SecurityGate({ children }: { children: React.ReactNode }
     setIsVerifying(true);
     try {
       const result = await verifyPin(pin);
-      
+
       if (result.success) {
         setIsAuthorized(true);
         toast.success("Access granted", {
@@ -84,8 +84,11 @@ export default function SecurityGate({ children }: { children: React.ReactNode }
             <Lock className="w-8 h-8 text-blue-400" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight mb-2">Protected Area</h1>
-          <p className="text-white/60 text-sm">
+          <p className="text-white/60 text-sm mb-1">
             Please enter your 6-digit access PIN to continue.
+          </p>
+          <p className="text-blue-400/80 text-xs font-medium">
+            Contact owner(Alankrit) for access
           </p>
         </div>
 
@@ -95,8 +98,8 @@ export default function SecurityGate({ children }: { children: React.ReactNode }
               <div
                 key={index}
                 className={`w-12 h-14 rounded-xl border-2 flex items-center justify-center text-xl font-mono transition-all duration-200 ${pin.length > index
-                    ? 'border-blue-500 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.3)]'
-                    : 'border-white/10 bg-white/5'
+                  ? 'border-blue-500 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.3)]'
+                  : 'border-white/10 bg-white/5'
                   }`}
               >
                 {pin[index] ? (
