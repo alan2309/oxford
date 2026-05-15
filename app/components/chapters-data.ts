@@ -13,6 +13,26 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "A320 QBS - Aeroguru- Phase 1",
+    chapters:[
+      { id: "a320pneumatics", title: "Pneumatics", questionCount: 75 },
+      { id: "a320airconpressvent", title: "AirCon/Press/Vent - 01", questionCount: 108 },
+      { id: "a320airconpressvent2", title: "AirCon/Press/Vent - 02", questionCount: 51 },
+      { id: "a320airconpressvent4", title: "AirCon/Press/Vent - 03", questionCount: 109 },
+      { id: "a320apu", title: "APU", questionCount: 59 },
+      { id: "a320airconpressvent3", title: "Revision AirCon/Press/Vent and APU", questionCount: 100 },
+      { id: "a320phase1controls", title: "CONTROLS AND INDICATIONS / LIMITATIONS (PHASE 1)", questionCount: 106 },
+    ],
+  },
+  {
+    title: "A320 QBS - Aeroguru- Phase 2",
+    chapters:[
+      { id: "a320electrical1", title: "ELECTRICAL -  01", questionCount: 66 },
+      { id: "a320electrical2", title: "ELECTRICAL -  02", questionCount: 78 },
+      { id: "a320hydraulics1", title: "HYDRAULICS - 01", questionCount: 87 },
+    ],
+  },
+  {
     title: "A320 Tests",
     chapters: [
       { id: "general", title: "General", questionCount: 20 },
