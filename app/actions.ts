@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
  * Since this is a Server Action, this value is NEVER sent to the browser.
  * It is completely invisible in the developer panel/inspect.
  */
-const SITE_PIN = "130903";
+const SITE_PIN = "230901";
 
 export async function verifyPin(enteredPin: string) {
   if (enteredPin === SITE_PIN) {
