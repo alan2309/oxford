@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Lock, ShieldCheck, AlertCircle, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import { verifyPin, checkAuthStatus } from "../actions";
@@ -10,6 +10,8 @@ export default function SecurityGate({ children }: { children: React.ReactNode }
   const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
   const [isError, setIsError] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     // Check if authorized via server session (cookie)
@@ -93,35 +95,44 @@ export default function SecurityGate({ children }: { children: React.ReactNode }
         </div>
 
         <form onSubmit={handlePinSubmit} className="space-y-6">
-          <div className="flex justify-center gap-3">
-            {[0, 1, 2, 3, 4, 5].map((index) => (
-              <div
-                key={index}
-                className={`w-12 h-14 rounded-xl border-2 flex items-center justify-center text-xl font-mono transition-all duration-200 ${pin.length > index
-                  ? 'border-blue-500 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.3)]'
-                  : 'border-white/10 bg-white/5'
-                  }`}
-              >
-                {pin[index] ? (
-                  <div className="w-2 h-2 rounded-full bg-white animate-in zoom-in duration-300" />
-                ) : (
-                  <div className="w-1 h-1 rounded-full bg-white/20" />
-                )}
-              </div>
-            ))}
-          </div>
+          <div className="relative">
+            <div 
+              className="flex justify-center gap-3"
+            >
+              {[0, 1, 2, 3, 4, 5].map((index) => (
+                <div
+                  key={index}
+                  className={`w-12 h-14 rounded-xl border-2 flex items-center justify-center text-xl font-mono transition-all duration-200 ${pin.length > index
+                    ? 'border-blue-500 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.3)]'
+                    : index === pin.length && isFocused
+                      ? 'border-blue-400/50 bg-white/10 ring-2 ring-blue-500/20'
+                      : 'border-white/10 bg-white/5'
+                    }`}
+                >
+                  {pin[index] ? (
+                    <div className="w-2 h-2 rounded-full bg-white animate-in zoom-in duration-300" />
+                  ) : (
+                    <div className="w-1 h-1 rounded-full bg-white/20" />
+                  )}
+                </div>
+              ))}
+            </div>
 
-          <input
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            maxLength={6}
-            value={pin}
-            onChange={(e) => handlePinChange(e.target.value)}
-            className="sr-only"
-            autoFocus
-            id="pin-input"
-          />
+            <input
+              ref={inputRef}
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              maxLength={6}
+              value={pin}
+              onChange={(e) => handlePinChange(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              className="absolute inset-0 w-full h-full opacity-0 cursor-default"
+              autoFocus
+              id="pin-input"
+            />
+          </div>
 
           {/* Hidden input label for accessibility */}
           <label htmlFor="pin-input" className="sr-only">Enter 6-digit PIN</label>
