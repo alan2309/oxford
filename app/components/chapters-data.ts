@@ -35,6 +35,17 @@ export const books: Book[] = [
       { id: "a320revision2", title: "REVISION TEST 2 (ELEC/HYD/FUEL)", questionCount: 117 },
     ],
   },
+   {
+    title: "A320 QBS - Aeroguru- Phase 3",
+    chapters:[
+      { id: "a320landinggear1", title: "LANDING GEAR -  01", questionCount: 67 },
+      // { id: "a320landinggear2", title: "LANDING GEAR -  02", questionCount: 78 },
+      // { id: "a320flightcontrols1", title: "HYDRAULICS - 01", questionCount: 87 },
+      // { id: "a320flightcontrols2", title: "FUEL - 01", questionCount: 78 },
+      // { id: "a320fuel2", title: "FUEL - 02", questionCount: 47 },
+      // { id: "a320revision2", title: "REVISION TEST 2 (ELEC/HYD/FUEL)", questionCount: 117 },
+    ],
+  },
   {
     title: "A320 Tests",
     chapters: [
