@@ -33,6 +33,7 @@ export const books: Book[] = [
       { id: "a320fuel1", title: "FUEL - 01", questionCount: 78 },
       { id: "a320fuel2", title: "FUEL - 02", questionCount: 47 },
       { id: "a320revision2", title: "REVISION TEST 2 (ELEC/HYD/FUEL)", questionCount: 117 },
+      { id: "a320controlsindications", title: "CONTROLS AND INDICATIONS / LIMITATIONS (PHASE 2)", questionCount: 53 },
     ],
   },
    {
