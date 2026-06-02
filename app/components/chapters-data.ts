@@ -41,8 +41,8 @@ export const books: Book[] = [
     chapters:[
       { id: "a320landinggear1", title: "LANDING GEAR -  01", questionCount: 67 },
       { id: "a320landinggear2", title: "LANDING GEAR -  02", questionCount: 64 },
-      // { id: "a320flightcontrols1", title: "HYDRAULICS - 01", questionCount: 87 },
-      // { id: "a320flightcontrols2", title: "FUEL - 01", questionCount: 78 },
+      { id: "a320flightcontrols1", title: "FLIGHT CONTROLS - 01", questionCount: 78 },
+      { id: "a320flightcontrols2", title: "FLIGHT CONTROLS - 02", questionCount: 111 },
       // { id: "a320fuel2", title: "FUEL - 02", questionCount: 47 },
       // { id: "a320revision2", title: "REVISION TEST 2 (ELEC/HYD/FUEL)", questionCount: 117 },
     ],
