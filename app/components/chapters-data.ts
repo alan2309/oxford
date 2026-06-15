@@ -43,8 +43,33 @@ export const books: Book[] = [
       { id: "a320landinggear2", title: "LANDING GEAR -  02", questionCount: 64 },
       { id: "a320flightcontrols1", title: "FLIGHT CONTROLS - 01", questionCount: 78 },
       { id: "a320flightcontrols2", title: "FLIGHT CONTROLS - 02", questionCount: 111 },
-      // { id: "a320fuel2", title: "FUEL - 02", questionCount: 47 },
-      // { id: "a320revision2", title: "REVISION TEST 2 (ELEC/HYD/FUEL)", questionCount: 117 },
+      { id: "a320indicating01", title: "INDICATING & RECORDING - 01", questionCount: 51 },
+      { id: "a320indicating02", title: "INDICATING & RECORDING - 02", questionCount: 79 },
+    ],
+  },
+  {
+    title: "A320 QBS - Aeroguru- Phase 4",
+    chapters:[
+      { id: "a320autoflight1", title: "AUTO FLIGHT -  01", questionCount: 41 },
+      { id: "a320autoflight2", title: "AUTO FLIGHT -  02", questionCount: 123 },
+      { id: "a320nav1", title: "NAVIGATION / SURV - 01", questionCount: 65 },
+      { id: "a320nav2", title: "NAVIGATION / SURV - 02", questionCount: 68 },
+      { id: "a320icenrain01", title: "ICE & RAIN - 01", questionCount: 73 },
+      // { id: "a320indicating02", title: "INDICATING & RECORDING - 02", questionCount: 79 },
+    ],
+  },
+  {
+    title: "A320 QBS - Aeroguru- Phase 5",
+    chapters:[
+      { id: "a320engine1", title: "ENGINES", questionCount: 63 },
+      { id: "a320fire1", title: "FIRE PROTECTION - 01", questionCount: 74 },
+      { id: "a320doors1", title: "DOORS/OXYGEN", questionCount: 62 }
+    ],
+  },
+  {
+    title: "A320 QBS - Aeroguru- papers",
+    chapters:[
+      { id: "a320indigo1", title: "Indigo 6e", questionCount: 60 },
     ],
   },
   {
