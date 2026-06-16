@@ -198,6 +198,26 @@ export default function ExamPage() {
                             <p className="text-sm text-red-700 dark:text-red-400">{question.options[userAnswer.selectedAnswer]}</p>
                           </>
                         )}
+                        {question.image && (
+                          <div className="mt-3 space-y-3 flex flex-col items-start">
+                            {Array.isArray(question.image) ? (
+                              question.image.map((imgUrl, imgIdx) => (
+                                <img
+                                  key={imgIdx}
+                                  src={imgUrl}
+                                  alt={`Question diagram ${imgIdx + 1}`}
+                                  className="max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm max-h-[200px] object-contain"
+                                />
+                              ))
+                            ) : (
+                              <img
+                                src={question.image}
+                                alt="Question diagram"
+                                className="max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm max-h-[200px] object-contain"
+                              />
+                            )}
+                          </div>
+                        )}
                       </div>
                       {userAnswer.isCorrect ? (
                         <CheckCircle className="h-6 w-6 text-green-500 ml-4" />
@@ -335,6 +355,28 @@ export default function ExamPage() {
                     </div>
                   ))}
                 </div>
+
+                {/* Image Display */}
+                {currentQuestion.image && (
+                  <div className="mt-4 space-y-4 flex flex-col items-center">
+                    {Array.isArray(currentQuestion.image) ? (
+                      currentQuestion.image.map((imgUrl, imgIdx) => (
+                        <img
+                          key={imgIdx}
+                          src={imgUrl}
+                          alt={`Question diagram ${imgIdx + 1}`}
+                          className="max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm max-h-[300px] object-contain"
+                        />
+                      ))
+                    ) : (
+                      <img
+                        src={currentQuestion.image}
+                        alt="Question diagram"
+                        className="max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm max-h-[300px] object-contain"
+                      />
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </CardContent>

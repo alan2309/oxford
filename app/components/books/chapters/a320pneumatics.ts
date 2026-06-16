@@ -13,6 +13,7 @@ export const examData: ExamData = {
         "One engine bleed system can either supply the packs or one pack plus WAI.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/a3215524-e8aa-4d27-9315-f7915e0a77a5.png",
     },
     {
       id: 2,
@@ -43,6 +44,10 @@ export const examData: ExamData = {
         "Engine bleed valve close, cross bleed valve closes & APU bleed valve opens.",
       ],
       answer: 1,
+      image: [
+        "https://cms-cdn.classplus.co/parserImages/cafe2c96-7970-4ca6-9046-d6fcc983f48f.png",
+        "https://cms-cdn.classplus.co/parserImages/81e00bae-47ec-4c3e-9e72-6a383f4d176c.png",
+      ],
     },
     {
       id: 5,
@@ -54,6 +59,7 @@ export const examData: ExamData = {
         "All of the above are correct.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/50cfc94a-71a0-4269-8f67-d309b08f146b.jpg",
     },
     {
       id: 6,
@@ -88,6 +94,7 @@ export const examData: ExamData = {
         "More than 35 psi",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/f502da94-1491-4126-8d5c-a6d9302a0821.jpg",
     },
     {
       id: 9,
@@ -100,6 +107,7 @@ export const examData: ExamData = {
         "Exceeds 257 Deg. C for more than 55 seconds.",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/c57e8d9e-4bc4-413a-8fbc-caf2b40fe39a.jpg",
     },
     {
       id: 10,
@@ -111,6 +119,7 @@ export const examData: ExamData = {
         "Above 35-38 psi",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/5261e9e3-4a8b-4670-a0ea-3a416a124ef5.png",
     },
     {
       id: 11,
@@ -135,6 +144,7 @@ export const examData: ExamData = {
         "All of the above are correct.",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/4d626f05-cbe8-4294-b596-53e3a35405d6.png",
     },
     {
       id: 13,

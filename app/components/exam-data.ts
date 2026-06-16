@@ -3,6 +3,7 @@ export interface Question {
   question: string
   options: string[]
   answer: number
+  image?: string | string[]
 }
 
 export interface ExamData {
