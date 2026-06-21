@@ -71,6 +71,15 @@ export const books: Book[] = [
     title: "A320 QBS - Aeroguru- papers",
     chapters:[
       { id: "a320indigo1", title: "Indigo 6e", questionCount: 60 },
+      { id: "a320MOCK1", title: "MOCK 1", questionCount: 150 },
+      { id: "a320MOCK1new", title: "MOCK 1 NEW", questionCount: 68 },
+      { id: "a320MOCK2", title: "MOCK 2", questionCount: 91 },
+      { id: "a320MOCK3", title: "MOCK 3", questionCount: 60 },
+      { id: "a320indigo2", title: "Indigo 6e - 2", questionCount: 60 },
+      { id: "a320indigo3", title: "Indigo 6e - 3", questionCount: 73 },
+      { id: "a320MOCK4", title: "MOCK 4", questionCount: 62 },
+      { id: "a320numericals", title: "NUMERICALS", questionCount: 62 },
+
     ],
   },
   {
