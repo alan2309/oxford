@@ -14,6 +14,7 @@ export const examData: ExamData = {
         "The associated Air conditioning system controller as there are no Pack Controllers or Zone Controllers on new A320 aircrafts.",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/f21b44a6-2e98-4702-a054-af62e7aa5125.png",
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ export const examData: ExamData = {
         "A PACK FLOW CONTROL valve",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/afd7c1e0-d80c-4c0d-b564-a8ad5d21f59d.jpg",
     },
     {
       id: 3,
@@ -37,6 +39,7 @@ export const examData: ExamData = {
         "Four rotary temperature selectors and four zones.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/72c45cf1-dd9a-4b66-8f83-a71ca1d96589.jpg",
     },
     {
       id: 4,
@@ -49,6 +52,7 @@ export const examData: ExamData = {
         "Adding re-circulated CABIN air",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/94399de5-616a-4e16-a918-ea4323ce0a0.png",
     },
     {
       id: 5,
@@ -61,6 +65,7 @@ export const examData: ExamData = {
         "A TRIM AIR valve.",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/294acf58-d2f8-4432-ae11-aa166d3f5705.png",
     },
     {
       id: 6,
@@ -73,6 +78,7 @@ export const examData: ExamData = {
         "COND and CAB PRESS page",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/d633d69b-f071-4844-bff6-aef360ae4393.jpg",
     },
     {
       id: 7,
@@ -85,6 +91,7 @@ export const examData: ExamData = {
         "FWD and AFT cabin temp is controlled to 18 deg. c",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/933252be-0e53-421c-ada9-8ffe4f3a3476.jpg",
     },
     {
       id: 8,
@@ -96,6 +103,7 @@ export const examData: ExamData = {
         "Closed during landing when the speed is less than 70 kts.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/37278103-b438-4654-9000-3868d27d293c.jpg",
     },
     {
       id: 9,
@@ -108,6 +116,7 @@ export const examData: ExamData = {
         "All the above.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/53a73ef2-ba28-4740-b7b5-616c1a3026b9.jpg",
     },
     {
       id: 10,
@@ -120,6 +129,7 @@ export const examData: ExamData = {
         "Both, (A) and (B).",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/57ab4e00-7465-40eb-9370-cc8a942fa902.jpg",
     },
     {
       id: 11,
@@ -132,6 +142,7 @@ export const examData: ExamData = {
         "120% of normal flow.",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/fcc06c4e-c867-481d-970d-90e36885994f.jpg",
     },
     {
       id: 12,
@@ -144,6 +155,7 @@ export const examData: ExamData = {
         "Closing of hot air pressure valve and opening of trim air valves.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/4b6508c2-260a-4206-92fc-b95f66f97b85.jpg",
     },
     {
       id: 13,
@@ -156,6 +168,10 @@ export const examData: ExamData = {
         "No effect on the cockpit. Cabin temp are controlled to a fixed temp of 15 Deg.c",
       ],
       answer: 0,
+      image: [
+        "https://cms-cdn.classplus.co/parserImages/dafc82ac-5fcb-4bc9-8926-5d82660263f4.jpg",
+        "https://cms-cdn.classplus.co/parserImages/cad7c8b1-4d25-24cb-b22f-739de6bd61fd.jpg"
+      ],
     },
     {
       id: 14,
@@ -178,6 +194,7 @@ export const examData: ExamData = {
         "All are correct",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/40327c36-839b-4d83-a1fe-3241ab5df8f5.jpg",
     },
     {
       id: 16,
@@ -190,6 +207,7 @@ export const examData: ExamData = {
         "When differential pressure is less than 1 psi, it opens the EMER RAM AIR inlet and closes the outflow valve.",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/376aa9b8-d85f-4e40-a828-a883555301ed.jpg",
     },
     {
       id: 17,
@@ -212,6 +230,7 @@ export const examData: ExamData = {
         "Pack flow selector at LO position.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/a9626193-a1c6-440a-a207-8664735c07e2.jpg",
     },
     {
       id: 19,
@@ -224,6 +243,7 @@ export const examData: ExamData = {
         "D. As in (B) but outflow valve will close only if press mode selector is in AUTO.",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/b76ccd27-2c5b-4877-8be8-2f95a57e8070.jpg",
     },
     {
       id: 20,
@@ -247,6 +267,7 @@ export const examData: ExamData = {
         "D. (A) and (B) are correct",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/5359a267-f395-4735-9f69-a20426888e74.jpg",
     },
     {
       id: 22,
@@ -259,6 +280,7 @@ export const examData: ExamData = {
         "It is the cabin altitude reached at the time of aircraft level off.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/23e27809-ca75-4233-8c8e-1075debc92f5.jpg",
     },
     {
       id: 23,
@@ -283,6 +305,7 @@ export const examData: ExamData = {
         "At touch down cabin altitude is same as a/c altitude.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/3ddce5b4-ac87-43ee-b595-7da9454544eb.jpg",
     },
     {
       id: 25,
@@ -295,6 +318,10 @@ export const examData: ExamData = {
         "As in (A) and when the mode selector p/b is selected to MAN, MAN illuminates white and FAULT remains illuminated.",
       ],
       answer: 3,
+      image: [
+        "https://cms-cdn.classplus.co/parserImages/9bddb501-0aad-4580-b086-195268253e47.jpg",
+        "https://cms-cdn.classplus.co/parserImages/780f2a46-9ea6-4141-84be-0a6c26b189db.jpg"
+      ],
     },
     {
       id: 26,
@@ -307,6 +334,7 @@ export const examData: ExamData = {
         "Both (A) and (C) are correct",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/ae93b64a-0fd9-4c32-8121-375e4b9853aa.jpg",
     },
     {
       id: 27,
@@ -331,6 +359,7 @@ export const examData: ExamData = {
         "Only controllable manually through the LDG ELEV selector.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/9868827d-fa80-410b-86a9-6acca610f514.jpg",
     },
     {
       id: 29,
@@ -343,6 +372,7 @@ export const examData: ExamData = {
         "Both (A) and (B) are correct.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/373a7b7d-b6ec-4a14-bc86-32ce717e5a1b.png",
     },
     {
       id: 30,
@@ -355,6 +385,7 @@ export const examData: ExamData = {
         "Blower and Extract p/bs _ OFF",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/21a05e56-06a5-4045-b0bc-bc12c007fe36.jpg",
     },
     {
       id: 31,
@@ -378,6 +409,7 @@ export const examData: ExamData = {
         "Engine bleed valve opens",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/d4a542f6-3146-4eb9-8a24-8950bdd62037.jpg",
     },
     {
       id: 33,
@@ -389,6 +421,7 @@ export const examData: ExamData = {
         "Outflow valve is set to full open always.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/00d238ec-7a9b-4eba-853f-0fa9d84f266d.jpg",
     },
     {
       id: 34,
@@ -400,6 +433,7 @@ export const examData: ExamData = {
         "Both safety valves avoid excessive negative differential pressure only.",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/6ffb27da-c091-4b80-80ce-464a382cf28e.jpg",
     },
     {
       id: 35,
@@ -411,6 +445,10 @@ export const examData: ExamData = {
         "All are correct.",
       ],
       answer: 3,
+      image: [
+        "https://cms-cdn.classplus.co/parserImages/96712a59-b5a6-4ef1-9444-8a6adfc5aa6e.jpg",
+        "https://cms-cdn.classplus.co/parserImages/5e46096f-4aef-41f1-85ba-03c22ff629e9.jpg"
+      ],
     },
     {
       id: 36,
@@ -434,6 +472,7 @@ export const examData: ExamData = {
         "D) 1,4",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/1e0c162f-44c2-4389-8253-b72056ab2629.jpg",
     },
     {
       id: 38,
@@ -457,6 +496,7 @@ export const examData: ExamData = {
         "Taken from air conditioning bay and circulated through skin heat exchanger.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/53b1912a-9cf9-42d4-b901-237ed7bd6a9f.jpg",
     },
     {
       id: 40,
@@ -469,6 +509,7 @@ export const examData: ExamData = {
         "Both the blower and the extract fan remain energized.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/f9431efb-0af5-4bc8-a65b-c4afc8e97662.jpg",
     },
     {
       id: 41,
@@ -481,6 +522,7 @@ export const examData: ExamData = {
         "In all the above cases.",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/5dd58ed5-8e4a-4f02-ad4f-44a05260ab62.jpg",
     },
     {
       id: 42,
@@ -505,6 +547,7 @@ export const examData: ExamData = {
         "None of the above is correct.",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/85661a9f-ea48-46d0-81a7-a1d293852d5c.jpg",
     },
     {
       id: 44,
@@ -516,6 +559,7 @@ export const examData: ExamData = {
         "Intermediate configuration.",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/1b390467-6e25-4fc2-8112-1234321aab5c.png",
     },
     {
       id: 45,
@@ -549,6 +593,7 @@ export const examData: ExamData = {
         "Intermediate configuration.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/98eccfe8-1084-4f33-b986-d0a80a5dbca9.jpg",
     },
     {
       id: 48,
@@ -560,6 +605,7 @@ export const examData: ExamData = {
         "All the above are correct",
       ],
       answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/9e063a8f-380c-4107-86f1-96dda82642a8.jpg",
     },
     {
       id: 49,
@@ -572,6 +618,7 @@ export const examData: ExamData = {
         "All the above are correct.",
       ],
       answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/dbf6f0ea-462b-4fed-a932-39718b612508.jpg",
     },
     {
       id: 50,
@@ -584,6 +631,7 @@ export const examData: ExamData = {
         "250 / MEA {whichever is higher}",
       ],
       answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/04e2f31f-990c-4e68-b640-6803109e7630.jpg",
     },
     {
       id: 51,
@@ -596,6 +644,7 @@ export const examData: ExamData = {
         "All of the above conditions.",
       ],
       answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/c2f52b5b-6146-4bb5-9f19-776434d1d1df.jpg",
     },
   ],
 };

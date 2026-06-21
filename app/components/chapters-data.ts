@@ -45,6 +45,7 @@ export const books: Book[] = [
       { id: "a320flightcontrols2", title: "FLIGHT CONTROLS - 02", questionCount: 111 },
       { id: "a320indicating01", title: "INDICATING & RECORDING - 01", questionCount: 51 },
       { id: "a320indicating02", title: "INDICATING & RECORDING - 02", questionCount: 79 },
+      { id: "a320indicatingrev", title: "Revision Test", questionCount: 143 },
     ],
   },
   {
@@ -55,7 +56,7 @@ export const books: Book[] = [
       { id: "a320nav1", title: "NAVIGATION / SURV - 01", questionCount: 65 },
       { id: "a320nav2", title: "NAVIGATION / SURV - 02", questionCount: 68 },
       { id: "a320icenrain01", title: "ICE & RAIN - 01", questionCount: 73 },
-      // { id: "a320indicating02", title: "INDICATING & RECORDING - 02", questionCount: 79 },
+      { id: "a320indicatingcontrols", title: "Control and Indications", questionCount: 62 },
     ],
   },
   {

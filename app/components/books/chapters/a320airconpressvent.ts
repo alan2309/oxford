@@ -108,7 +108,8 @@ export const examData: ExamData = {
         "No effect",
         "Cabin temperature will be controlled at the upper limit 30 deg C"
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/d09c6618-b8cf-436f-bd0a-f028f9984211.jpg"
     },
     {
       id: 11,
@@ -141,7 +142,11 @@ export const examData: ExamData = {
         "Opens automatically in case of duct overheat",
         "Opens automatically if the cabin trim air valve fails"
       ],
-      answer: 0
+      answer: 0,
+      image: [
+        "https://cms-cdn.classplus.co/parserImages/81a3b302-4cca-4047-a4e4-19d4f71ffc2b.jpg",
+        "https://cms-cdn.classplus.co/parserImages/76a94f04-2923-4095-b38a-637b11032e48.png"
+      ]
     },
     {
       id: 14,
@@ -163,7 +168,8 @@ export const examData: ExamData = {
         "In any case, flight idle is sufficient",
         "The APU must be used to supply additional air."
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/d75113aa-9d5e-4083-a74c-ee62d35da5ea.jpg"
     },
     {
       id: 16,
@@ -196,7 +202,8 @@ export const examData: ExamData = {
         "Yes, if external temperature is greater than 50 deg C",
         "Yes, provided the airflow supplied by the ground cart is less than 1.2 kg/s"
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/d9d3e915-6d2b-4fd3-9494-2775771184bf.jpg"
     },
     {
       id: 19,
@@ -240,7 +247,8 @@ export const examData: ExamData = {
         "A PACK FLOW VALVE.",
         "A TRIM AIR valve."
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/21095753-033c-4f39-8f11-44fc66ada921.jpg"
     },
     {
       id: 23,
@@ -251,7 +259,8 @@ export const examData: ExamData = {
         "Pressurization occurs during the takeoff roll.",
         "After rotation."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/d4013ea2-4f80-444e-b90f-fbb54581ff03.jpg"
     },
     {
       id: 24,
@@ -273,7 +282,8 @@ export const examData: ExamData = {
         "With a high passenger load to reduce cabin temperature",
         "In cold conditions to achieve a higher cabin temperature range"
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/eb2ba43d-b739-4c08-ab2f-d63897f9b60d.jpg"
     },
     {
       id: 26,
@@ -295,7 +305,8 @@ export const examData: ExamData = {
         "LGCIU's and pitot static sources.",
         "MCDU and LGCIU's."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/707c2869-cdad-409d-a954-ecb22067a139.jpg"
     },
     {
       id: 28,
@@ -306,7 +317,8 @@ export const examData: ExamData = {
         "Three zone controllers that pass information and instructions to two pack controllers for three zones.",
         "Two zone controllers that passes information and instructions to two pack controllers for three zones, or the ACSC"
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/0c24cb89-90df-4d7e-bc55-ea5ffad51888.jpg"
     },
     {
       id: 29,
@@ -317,7 +329,8 @@ export const examData: ExamData = {
         "When pack temperatures are too high.",
         "When there is smoke in the cabin."
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/eb4ef9a5-4ebd-498f-9dc8-4ce9b4bf3216.jpg"
     },
     {
       id: 30,
@@ -347,7 +360,8 @@ export const examData: ExamData = {
         "Yes, manually set landing elevation using the LND ELEV AUTO selector",
         "Both are correct."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/1e80c8ca-3a77-4846-b1f4-9fcea72cfe63.png"
     },
     {
       id: 33,
@@ -410,7 +424,8 @@ export const examData: ExamData = {
         "Will not open if the DITCHING switch is off.",
         "Operation is automatic."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/f748e3da-779a-4f9b-9fe4-7a35061f2667.jpg"
     },
     {
       id: 39,
@@ -421,7 +436,8 @@ export const examData: ExamData = {
         "The engine bleed valves.",
         "Only the avionics cooling valves."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/0b0a1550-728e-4736-855c-a44f81c60fb2.jpg"
     },
     {
       id: 40,
@@ -465,7 +481,8 @@ export const examData: ExamData = {
         "The in-flight ECAM cruise page.",
         "The in-flight ECAM cruise page and the CAB PRESS pages."
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/f7643484-fa05-4b4b-a409-05055f65d0d4.jpg"
     },
     {
       id: 44,
@@ -476,7 +493,8 @@ export const examData: ExamData = {
         "Pack Outflow Control Valve.",
         "Engine interface units EIU's"
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/32bd38aa-baad-404e-9137-98f2a9780c61.jpg"
     },
     {
       id: 45,
@@ -487,7 +505,8 @@ export const examData: ExamData = {
         "20 deg C for Pack one and 10 deg C for Pack two",
         "24 deg C for Pack one and 15 deg C for Pack two."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/e8179ae5-5a02-4742-a001-87b7ef80de13.jpg"
     },
     {
       id: 46,
@@ -520,7 +539,8 @@ export const examData: ExamData = {
         "Hot trim air is added to the mixing unit before distribution to each zone.",
         "Recirculating fans draw cabin air to a mixing unit where conditioned air is added."
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/1e2b2ce8-f064-4c27-a7c3-65587ad3302f.jpg"
     },
     {
       id: 49,
@@ -553,7 +573,8 @@ export const examData: ExamData = {
         "Adding an avionics bay air.",
         "Passing air through a skin heat exchanger."
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/281540b1-6510-4f49-a0b4-c4a3d871801f.jpg"
     },
     {
       id: 52,
@@ -564,7 +585,8 @@ export const examData: ExamData = {
         "Opens the #2 GLC.",
         "De-energizes the blower fan, extract fan runs, and opens the air conditioning extract valves."
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/b610d86f-015d-408c-2867-07d3a9e34e38.jpg"
     },
     {
       id: 53,
@@ -574,7 +596,8 @@ export const examData: ExamData = {
         "Cycle the CABIN PRESS MODE SEL pushbutton to the MAN position then back to AUTO.",
         "Cycle the cabin pressurization MAN V/S CTL switch"
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/d6785980-0637-48d0-abdc-c6e31012fc01.jpg"
     },
     {
       id: 54,
@@ -584,7 +607,8 @@ export const examData: ExamData = {
         "The hot air press reg. valve closes and the trim air valves open.",
         "The hot air press reg. valve closes and the trim air valves close."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/75ae10f2-2e26-4807-9fe4-e47fc20a3068.jpg"
     },
     {
       id: 55,
@@ -679,7 +703,8 @@ export const examData: ExamData = {
         "True.",
         "False."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/49957974-f43e-44a8-85d3-77484a6fea13.png"
     },
     {
       id: 64,
@@ -708,7 +733,8 @@ export const examData: ExamData = {
         "True.",
         "False."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/5213e97d-e754-4573-9825-10f02102da6d.png"
     },
     {
       id: 67,
@@ -730,7 +756,8 @@ export const examData: ExamData = {
         "Two valves with only one door visible.",
         "Two valves (one main + one back-up) with only two doors visible."
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/1861f7ea-e49f-4ac6-b266-60141a0464a4.png"
     },
     {
       id: 69,
@@ -741,7 +768,8 @@ export const examData: ExamData = {
         "9,550 feet",
         "14,000 feet."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/91901f5c-2d0c-4d5a-916d-8ee53df711b5.png"
     },
     {
       id: 70,
@@ -762,7 +790,8 @@ export const examData: ExamData = {
         "On the PRESS page",
         "On the ECAM CRUISE or the PRESS page."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/fce14a03-72fa-48c9-b2cd-46ab01d7d2a0.png"
     },
     {
       id: 72,
@@ -773,7 +802,8 @@ export const examData: ExamData = {
         "Wing or engine leak on associated side.",
         "All of the above"
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/45c6e93d-23f9-4b09-a96e-e8641f296e42.png"
     },
     {
       id: 73,
@@ -814,7 +844,8 @@ export const examData: ExamData = {
         "Excessive negative differential.",
         "Both are correct."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/464ede41-798a-4e29-8f1b-9f4ee24b96db.jpg"
     },
     {
       id: 77,
@@ -825,7 +856,8 @@ export const examData: ExamData = {
         "ADIRS.",
         "Captain baro ref."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/1a60ed00-763a-4b56-8058-4c6a34ac2854.jpg"
     },
     {
       id: 78,
@@ -836,7 +868,8 @@ export const examData: ExamData = {
         "Packs and cabin air",
         "Pack 1 and pack 2 only."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/8c490890-6650-46c7-94c7-f8e8aff3bfba.jpg"
     },
     {
       id: 79,
@@ -847,7 +880,8 @@ export const examData: ExamData = {
         "Automatically, pack one as a master, pack two as a slave",
         "Automatically, pack two as a master, pack one as a slave."
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/3d27674a-0ffe-4238-92d6-f71ebd244dde.jpg"
     },
     {
       id: 80,
@@ -869,7 +903,8 @@ export const examData: ExamData = {
         "Secondary channel operates as back up and operation is as normal",
         "The packs deliver a fixed temperature. 20 deg C for pack one and 10 deg C for pack two"
       ],
-      answer: 0
+      answer: 0,
+      image: "https://cms-cdn.classplus.co/parserImages/5ed9fe59-662a-48f3-9e5a-930828c56c56.png"
     },
     {
       id: 82,
@@ -891,7 +926,8 @@ export const examData: ExamData = {
         "Anti-ice valve",
         "Trim air valve."
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/b0f83598-e8e3-4605-b546-0f0c56850561.png"
     },
     {
       id: 84,
@@ -913,7 +949,8 @@ export const examData: ExamData = {
         "120% of normal",
         "110% of normal"
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/0e3c4666-a865-44a2-9800-e0b3b0db7245.png"
     },
     {
       id: 86,
@@ -924,7 +961,8 @@ export const examData: ExamData = {
         "15 deg.C",
         "10 deg.C"
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/07d4e8f4-25b2-4c08-9f1c-1bae02c6ca4e.jpg"
     },
     {
       id: 87,
@@ -935,7 +973,8 @@ export const examData: ExamData = {
         "Hot air and trim air valves close and packs deliver air at a fixed temperature (20 deg.C pack 1 and 10 deg.pack2)",
         "Hot air and trim air valves open and packs deliver air at a fixed temperature (20 deg.C pack 1 and 10 deg.pack2)"
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/01cee8bb-1b91-4a42-a6cc-36905511c89a.jpg"
     },
     {
       id: 88,
@@ -946,7 +985,8 @@ export const examData: ExamData = {
         "70 kts (after 20 seconds delay)",
         "85 kts (after 20 seconds delay)"
       ],
-      answer: 2
+      answer: 2,
+      image: "https://cms-cdn.classplus.co/parserImages/51b96423-e2b7-44b9-a243-0ac061941227.jpg"
     },
     {
       id: 89,
@@ -957,7 +997,8 @@ export const examData: ExamData = {
         "The pack flow control valves",
         "All of the above"
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/76fe7899-abf0-4b6a-bdb6-d20ce03e0962.jpg"
     },
     {
       id: 90,
@@ -1023,7 +1064,8 @@ export const examData: ExamData = {
         "No2",
         "Neither"
       ],
-      answer: 1
+      answer: 1,
+      image: "https://cms-cdn.classplus.co/parserImages/a998063e-7ec6-42d3-a57c-8e5f132045e8.jpg"
     },
     {
       id: 96,
@@ -1075,7 +1117,8 @@ export const examData: ExamData = {
         "Both safety valves are fully closed",
         "One safety valve is open."
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/f0633456-bf0b-4917-84ae-307a70ac5368.png"
     },
     {
       id: 101,
@@ -1086,7 +1129,8 @@ export const examData: ExamData = {
         "> 10,000 ft",
         "> 9,550 ft"
       ],
-      answer: 3
+      answer: 3,
+      image: "https://cms-cdn.classplus.co/parserImages/96e8de8c-3616-4b15-be4c-8fe56e69bb21.png"
     },
     {
       id: 102,
