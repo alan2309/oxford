@@ -64,7 +64,9 @@ export const books: Book[] = [
     chapters:[
       { id: "a320engine1", title: "ENGINES", questionCount: 63 },
       { id: "a320fire1", title: "FIRE PROTECTION - 01", questionCount: 74 },
-      { id: "a320doors1", title: "DOORS/OXYGEN", questionCount: 62 }
+      { id: "a320doors1", title: "DOORS/OXYGEN", questionCount: 62 },
+      { id: "perform1", title: "CPL + PERFORMANCE", questionCount: 62 },
+      { id: "perform2", title: "CPL + PERFORMANCE 2", questionCount: 62 }
     ],
   },
   {
