@@ -15,6 +15,8 @@ import {
   Save,
   ChevronDown,
   Search,
+  Shuffle,
+  ListOrdered,
 } from "lucide-react";
 import { books } from "./components/chapters-data";
 import emailjs from "@emailjs/browser";
@@ -475,23 +477,45 @@ export default function HomePage() {
                             </div>
                           </CardHeader>
                           <CardContent className="pt-0">
-                            <Button
-                              className="w-full group-hover:bg-blue-600 transition-colors"
-                              size="sm"
-                              disabled={chapter.questionCount === 0}
-                            >
-                              {chapter.questionCount === 0 ? (
-                                "No Questions Available"
-                              ) : (
-                                <Link
-                                  href={`/exam/${chapter.id}`}
-                                  className="flex items-center justify-center"
+                            {chapter.questionCount === 0 ? (
+                              <Button
+                                className="w-full"
+                                size="sm"
+                                disabled
+                              >
+                                No Questions Available
+                              </Button>
+                            ) : (
+                              <div className="grid grid-cols-2 gap-2">
+                                <Button
+                                  asChild
+                                  variant="outline"
+                                  size="sm"
+                                  className="w-full hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 transition-colors"
                                 >
-                                  Start Exam
-                                  <ChevronRight className="ml-2 h-4 w-4" />
-                                </Link>
-                              )}
-                            </Button>
+                                  <Link
+                                    href={`/exam/${chapter.id}?mode=same`}
+                                    className="flex items-center justify-center"
+                                  >
+                                    <ListOrdered className="mr-1.5 h-3.5 w-3.5" />
+                                    Same
+                                  </Link>
+                                </Button>
+                                <Button
+                                  asChild
+                                  size="sm"
+                                  className="w-full group-hover:bg-blue-600 transition-colors"
+                                >
+                                  <Link
+                                    href={`/exam/${chapter.id}?mode=random`}
+                                    className="flex items-center justify-center"
+                                  >
+                                    <Shuffle className="mr-1.5 h-3.5 w-3.5" />
+                                    Random
+                                  </Link>
+                                </Button>
+                              </div>
+                            )}
                           </CardContent>
                         </Card>
                       ))}

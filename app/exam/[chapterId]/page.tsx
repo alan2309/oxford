@@ -1,13 +1,14 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
-import { useParams, useRouter } from "next/navigation"
+import { useState, useEffect, useMemo, Suspense } from "react"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
-import { CheckCircle, XCircle, RotateCcw, Home, ArrowLeft } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { CheckCircle, XCircle, RotateCcw, Home, ArrowLeft, Shuffle, ListOrdered } from "lucide-react"
 import Link from "next/link"
 import { getChapterData } from "@/app/components/chapters-data"
 import type { ExamData, Question } from "@/app/components/exam-data"
@@ -22,10 +23,13 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-export default function ExamPage() {
+function ExamContent() {
   const params = useParams()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const chapterId = params.chapterId as string
+  const mode = searchParams.get("mode") // "same" for JSON sequence, or "random" (defaults to random for compatibility)
+  const isSameOrder = mode === "same"
 
   const [examData, setExamData] = useState<ExamData | null>(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -35,6 +39,7 @@ export default function ExamPage() {
   const [answers, setAnswers] = useState<Array<{ questionId: number; selectedAnswer: number; isCorrect: boolean; ans: number }>>([])
   const [examCompleted, setExamCompleted] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [restartKey, setRestartKey] = useState(0)
 
   useEffect(() => {
     const loadExamData = async () => {
@@ -57,13 +62,17 @@ export default function ExamPage() {
   }, [chapterId, router])
 
   /**
-   * Shuffle question order once when examData first loads.
+   * If mode is "same", keep questions in original JSON sequence.
+   * Otherwise (default or "random"), shuffle question order.
    * Options stay in their original order so the `answer` index remains valid.
    */
   const questions = useMemo<Question[]>(() => {
     if (!examData) return []
+    if (isSameOrder) {
+      return [...examData.questions]
+    }
     return shuffle(examData.questions)
-  }, [examData])
+  }, [examData, isSameOrder, restartKey])
 
   if (loading) {
     return (
@@ -141,6 +150,7 @@ export default function ExamPage() {
     setScore(0)
     setAnswers([])
     setExamCompleted(false)
+    setRestartKey((prev) => prev + 1)
   }
 
   const getScoreColor = (percentage: number) => {
@@ -169,7 +179,7 @@ export default function ExamPage() {
                 Exam Completed! 🎉
               </CardTitle>
               <CardDescription className="text-xl">
-                {examData.title} - Your final score: {score} out of {questions.length}
+                {examData.title} • {isSameOrder ? "Same Order" : "Random Order"} - Your final score: {score} out of {questions.length}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -269,7 +279,20 @@ export default function ExamPage() {
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{examData.title}</h1>
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">{examData.title}</h1>
+            <Badge variant="outline" className="flex items-center gap-1 text-xs">
+              {isSameOrder ? (
+                <>
+                  <ListOrdered className="h-3 w-3" /> Same Order
+                </>
+              ) : (
+                <>
+                  <Shuffle className="h-3 w-3" /> Random Order
+                </>
+              )}
+            </Badge>
+          </div>
 
           <div className="space-y-2">
             <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
@@ -394,5 +417,26 @@ export default function ExamPage() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function ExamPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+          <Card className="w-96">
+            <CardContent className="flex items-center justify-center p-8">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p className="text-gray-600 dark:text-gray-400">Loading exam...</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      }
+    >
+      <ExamContent />
+    </Suspense>
   )
 }
